@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import Blogcards from '../../components/Blogcards/Blogcards';
-import Topbar from '../../components/Topbar/Topbar'
+import Topbar from '../../components/Topbar/Topbar';
 import api from '../../services/api'; 
 
 export default function Home() {
-    const [item,setItem] = useState([])
+    const [item,setItem] = useState(undefined)
     
     useEffect(() =>{
-       
-        api.get('/rn-api/?api=posts')
-            .then((response) =>{
-                setItem(response.data);
-            })
+       async function loadBlog(){
+            const data = await api.get('/rn-api/?api=posts')
+                .then((response) =>{
+                   setItem(response.data);
+               })
+            return data;
+       }
+       loadBlog();
      
-    },[item]);
+    },[]);
 
     return (
         <div>
             <Topbar/>
-            <Blogcards info={item}/>
+            {!item
+                ? <div> carregando </div>
+                : <Blogcards info={item}/>}
+            
         </div>
     )
 }
