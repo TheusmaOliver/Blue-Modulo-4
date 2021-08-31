@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color: blue;   
+    position: sticky;
+    top: 0;
+    
+}
+
+.header-menu{
+    margin: 0 0 0 1rem;
+    color: white;
+    background: transparent;
+    border:0;
+    cursor: pointer;
+}
+
+.header-title{
+    margin: 0;
+    
+    padding: 0.3rem;
+    color:white;
+}
+
+.header-nav{
+    margin: 0 1rem 0 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+.header-nav-item{
+    padding: 0 0.5rem 0 0;
+    cursor: pointer;
+   
+}
+
+.header-nav-item svg{
+    color:white;
+}
+
+@media (max-width: 768px) {
+    .header-title{
+        font-size:1.5rem;
+    }
+}
