@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { PersonagemService } from './personagem.service';
 import { CreatePersonagemDto } from './dto/create-personagem.dto';
@@ -26,20 +28,21 @@ export class PersonagemController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.personagemService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.personagemService.findOne(id);
   }
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updatePersonagemDto: UpdatePersonagemDto,
   ) {
-    return this.personagemService.update(+id, updatePersonagemDto);
+    return this.personagemService.update(id, updatePersonagemDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.personagemService.remove(+id);
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id') id: number) {
+    return this.personagemService.remove(id);
   }
 }
