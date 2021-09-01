@@ -18,7 +18,9 @@ __decorate([
     __metadata("design:type", String)
 ], CreatePersonagemDto.prototype, "nome", void 0);
 __decorate([
-    (0, class_validator_1.IsUrl)(),
+    (0, class_validator_1.IsUrl)({
+        require_protocol: true,
+    }),
     __metadata("design:type", String)
 ], CreatePersonagemDto.prototype, "imagemUrl", void 0);
 exports.CreatePersonagemDto = CreatePersonagemDto;

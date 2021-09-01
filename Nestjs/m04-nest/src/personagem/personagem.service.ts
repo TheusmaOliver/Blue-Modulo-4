@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreatePersonagemDto } from './dto/create-personagem.dto';
 import { UpdatePersonagemDto } from './dto/update-personagem.dto';
 import { Personagem } from './entities/personagem.entity';
 
 @Injectable()
 export class PersonagemService {
+  constructor(private readonly prisma: PrismaService) {}
+
   private personagens: Personagem[] = [
     {
       id: 1,

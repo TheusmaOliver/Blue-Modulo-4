@@ -10,10 +10,12 @@ exports.PersonagemModule = void 0;
 const common_1 = require("@nestjs/common");
 const personagem_service_1 = require("./personagem.service");
 const personagem_controller_1 = require("./personagem.controller");
+const prisma_module_1 = require("../prisma/prisma.module");
 let PersonagemModule = class PersonagemModule {
 };
 PersonagemModule = __decorate([
     (0, common_1.Module)({
+        imports: [prisma_module_1.PrismaModule],
         controllers: [personagem_controller_1.PersonagemController],
         providers: [personagem_service_1.PersonagemService],
     })
