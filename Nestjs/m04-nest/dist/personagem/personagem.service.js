@@ -24,28 +24,28 @@ let PersonagemService = class PersonagemService {
         ];
     }
     create(createPersonagemDto) {
-        const personagem = Object.assign({ id: this.personagens.length + 1 }, createPersonagemDto);
-        this.personagens.push(personagem);
-        return personagem;
+        return this.prisma.personagem.create({
+            data: createPersonagemDto,
+        });
     }
     findAll() {
-        const personagens = this.personagens;
-        return personagens;
+        return this.prisma.personagem.findMany();
     }
     findOne(id) {
-        const personagem = this.personagens.find((p) => p.id === id);
-        return personagem;
+        return this.prisma.personagem.findUnique({
+            where: { id },
+        });
     }
     update(id, updatePersonagemDto) {
-        const index = this.personagens.findIndex((personagem) => personagem.id === id);
-        const personagemAtual = this.personagens[index];
-        const novoPersonagem = Object.assign(Object.assign({}, personagemAtual), updatePersonagemDto);
-        this.personagens[index] = novoPersonagem;
-        return novoPersonagem;
+        return this.prisma.personagem.update({
+            where: { id },
+            data: updatePersonagemDto,
+        });
     }
     remove(id) {
-        const index = this.personagens.findIndex((personagem) => personagem.id === id);
-        delete this.personagens[index];
+        return this.prisma.personagem.delete({
+            where: { id },
+        });
     }
 };
 PersonagemService = __decorate([

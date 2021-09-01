@@ -16,46 +16,31 @@ export class PersonagemService {
     },
   ];
   create(createPersonagemDto: CreatePersonagemDto) {
-    const personagem: Personagem = {
-      id: this.personagens.length + 1,
-      ...createPersonagemDto,
-    };
-
-    this.personagens.push(personagem);
-    return personagem;
+    return this.prisma.personagem.create({
+      data: createPersonagemDto,
+    });
   }
 
   findAll() {
-    const personagens = this.personagens;
-
-    return personagens;
+    return this.prisma.personagem.findMany();
   }
 
   findOne(id: number) {
-    const personagem = this.personagens.find((p) => p.id === id);
-    return personagem;
+    return this.prisma.personagem.findUnique({
+      where: { id },
+    });
   }
 
   update(id: number, updatePersonagemDto: UpdatePersonagemDto) {
-    const index = this.personagens.findIndex(
-      (personagem) => personagem.id === id,
-    );
-    const personagemAtual = this.personagens[index];
-
-    const novoPersonagem = {
-      ...personagemAtual,
-      ...updatePersonagemDto,
-    };
-
-    this.personagens[index] = novoPersonagem;
-
-    return novoPersonagem;
+    return this.prisma.personagem.update({
+      where: { id },
+      data: updatePersonagemDto,
+    });
   }
 
   remove(id: number) {
-    const index = this.personagens.findIndex(
-      (personagem) => personagem.id === id,
-    );
-    delete this.personagens[index];
+    return this.prisma.personagem.delete({
+      where: { id },
+    });
   }
 }
