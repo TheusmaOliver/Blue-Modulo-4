@@ -1,0 +1,12 @@
+.not-found {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.not-found__link {
+  text-decoration: none;
+  color: blue;
+}

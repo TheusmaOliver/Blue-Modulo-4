@@ -1,0 +1,42 @@
+#posts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.list {
+  list-style-type: none;
+  width: 50%;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.list-item__span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.list-item__link {
+  text-decoration: none;
+  margin-right: 0.5rem;
+  color: blue;
+}
+
+.list-item__btn {
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-item__btn:hover {
+  color: white;
+  background-color: red;
+}

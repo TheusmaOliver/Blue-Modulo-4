@@ -1,67 +1,68 @@
-.blog{
-    width: 100%;
-    height: calc(100%-50px);
+.blog {
+  width: 100%;
+  height: calc(100%-50px);
 }
 
-.blog-list{
-    padding: 0 2rem;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 1.5rem; 
+.blog-list {
+  padding: 0 2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
 }
-.blog-list-item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    padding: 0.5rem;
-    border-radius: 8px;
-}
-
-.blog-item-title{
-    font-size:1rem;
-    margin-bottom: 1rem;
+.blog-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
 }
 
-.blog-item-image{
-    width: 300px;
-    height: 200px;
-}
-.blog-item-subtitle{
-    padding: 0.5rem 0;
-    font-size: 0.8rem;
-    font-style: italic;
-    color: #808080;
+.blog-item-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
-.blog-item-button{
-    background-color: transparent;
-    border: 1px solid #4C89E3;
-    color: #4C89E3;
-    text-transform: uppercase;
-    border-radius:4px;
-    padding: 0.5rem 2rem;
-    cursor: pointer;
+.blog-item-image {
+  width: 300px;
+  height: 200px;
+}
+.blog-item-subtitle {
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #808080;
 }
 
-.blog-item-button:hover{
-    background-color: #4C89E3;
-    color: white;
+.blog-item-button {
+  background-color: transparent;
+  border: 1px solid #4c89e3;
+  color: #4c89e3;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-@media (max-width: 768px){
-    .blog-list{
-        padding: 0 1rem;
-        grid-template-columns: repeat(1,1fr)
-    }
+.blog-item-button:hover {
+  background-color: #4c89e3;
+  color: white;
+}
 
-    .blog-list-item{
-        width: 95%;
-    }
+@media (max-width: 768px) {
+  .blog-list {
+    padding: 0 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-    .blog-item-image{
-        width: 200px;
-        height: 100px;
-    }
+  .blog-list-item {
+    width: 95%;
+  }
+
+  .blog-item-image {
+    width: 200px;
+    height: 100px;
+  }
 }
