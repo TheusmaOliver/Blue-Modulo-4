@@ -4,7 +4,6 @@ import { UpdatePersonagemDto } from './dto/update-personagem.dto';
 export declare class PersonagemService {
     private readonly prisma;
     constructor(prisma: PrismaService);
-    private personagens;
     create(createPersonagemDto: CreatePersonagemDto): import(".prisma/client").Prisma.Prisma__PersonagemClient<import(".prisma/client").Personagem>;
     findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").Personagem[]>;
     findOne(id: number): import(".prisma/client").Prisma.Prisma__PersonagemClient<import(".prisma/client").Personagem>;

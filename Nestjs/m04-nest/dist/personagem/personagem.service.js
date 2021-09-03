@@ -15,13 +15,6 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let PersonagemService = class PersonagemService {
     constructor(prisma) {
         this.prisma = prisma;
-        this.personagens = [
-            {
-                id: 1,
-                nome: 'Rick',
-                imagemUrl: 'http://imagem.com',
-            },
-        ];
     }
     create(createPersonagemDto) {
         return this.prisma.personagem.create({

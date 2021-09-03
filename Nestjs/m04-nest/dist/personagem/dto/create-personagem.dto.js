@@ -23,5 +23,9 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], CreatePersonagemDto.prototype, "imagemUrl", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    __metadata("design:type", Number)
+], CreatePersonagemDto.prototype, "origemId", void 0);
 exports.CreatePersonagemDto = CreatePersonagemDto;
 //# sourceMappingURL=create-personagem.dto.js.map

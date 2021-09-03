@@ -12,7 +12,15 @@ generator client {
 }
 
 model Personagem {
-  id        Int    @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   nome      String
   imagemUrl String
+  origem    Localizacao @relation(fields: [origemId], references: [id])
+  origemId  Int
+}
+
+model Localizacao {
+  id          Int          @id @default(autoincrement())
+  nome        String
+  personagens Personagem[]
 }
