@@ -9,16 +9,38 @@ export class PersonagemService {
   create(createPersonagemDto: CreatePersonagemDto) {
     return this.prisma.personagem.create({
       data: createPersonagemDto,
+      include: {
+        origem: {
+          select: {
+            nome: true,
+          },
+        },
+      },
     });
   }
 
   findAll() {
-    return this.prisma.personagem.findMany();
+    return this.prisma.personagem.findMany({
+      include: {
+        origem: {
+          select: {
+            nome: true,
+          },
+        },
+      },
+    });
   }
 
   findOne(id: number) {
     return this.prisma.personagem.findUnique({
       where: { id },
+      include: {
+        origem: {
+          select: {
+            nome: true,
+          },
+        },
+      },
     });
   }
 
@@ -26,12 +48,26 @@ export class PersonagemService {
     return this.prisma.personagem.update({
       where: { id },
       data: updatePersonagemDto,
+      include: {
+        origem: {
+          select: {
+            nome: true,
+          },
+        },
+      },
     });
   }
 
   remove(id: number) {
     return this.prisma.personagem.delete({
       where: { id },
+      include: {
+        origem: {
+          select: {
+            nome: true,
+          },
+        },
+      },
     });
   }
 }

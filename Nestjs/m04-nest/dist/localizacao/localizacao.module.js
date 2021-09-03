@@ -6,21 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.LocalizacaoModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const personagem_module_1 = require("./personagem/personagem.module");
-const prisma_module_1 = require("./prisma/prisma.module");
-const localizacao_module_1 = require("./localizacao/localizacao.module");
-let AppModule = class AppModule {
+const localizacao_service_1 = require("./localizacao.service");
+const localizacao_controller_1 = require("./localizacao.controller");
+const prisma_module_1 = require("../prisma/prisma.module");
+let LocalizacaoModule = class LocalizacaoModule {
 };
-AppModule = __decorate([
+LocalizacaoModule = __decorate([
     (0, common_1.Module)({
-        imports: [personagem_module_1.PersonagemModule, prisma_module_1.PrismaModule, localizacao_module_1.LocalizacaoModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        imports: [prisma_module_1.PrismaModule],
+        controllers: [localizacao_controller_1.LocalizacaoController],
+        providers: [localizacao_service_1.LocalizacaoService],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], LocalizacaoModule);
+exports.LocalizacaoModule = LocalizacaoModule;
+//# sourceMappingURL=localizacao.module.js.map

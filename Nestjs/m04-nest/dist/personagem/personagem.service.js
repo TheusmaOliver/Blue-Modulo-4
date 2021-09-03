@@ -19,25 +19,61 @@ let PersonagemService = class PersonagemService {
     create(createPersonagemDto) {
         return this.prisma.personagem.create({
             data: createPersonagemDto,
+            include: {
+                origem: {
+                    select: {
+                        nome: true,
+                    },
+                },
+            },
         });
     }
     findAll() {
-        return this.prisma.personagem.findMany();
+        return this.prisma.personagem.findMany({
+            include: {
+                origem: {
+                    select: {
+                        nome: true,
+                    },
+                },
+            },
+        });
     }
     findOne(id) {
         return this.prisma.personagem.findUnique({
             where: { id },
+            include: {
+                origem: {
+                    select: {
+                        nome: true,
+                    },
+                },
+            },
         });
     }
     update(id, updatePersonagemDto) {
         return this.prisma.personagem.update({
             where: { id },
             data: updatePersonagemDto,
+            include: {
+                origem: {
+                    select: {
+                        nome: true,
+                    },
+                },
+            },
         });
     }
     remove(id) {
         return this.prisma.personagem.delete({
             where: { id },
+            include: {
+                origem: {
+                    select: {
+                        nome: true,
+                    },
+                },
+            },
         });
     }
 };
