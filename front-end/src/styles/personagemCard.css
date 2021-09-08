@@ -1,0 +1,40 @@
+.personagem-card {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.personagem-card__btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.personagem-card__btns button {
+  padding: 0.8rem;
+  width: 49%;
+}
+.personagem-card__btns #edit {
+  background-color: #414bb2;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+}
+.personagem-card__btns #delete {
+  background-color: #f24726;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.personagem-card__title {
+  font-size: 1.2rem;
+}
+
+.personagem-card__info {
+  display: flex;
+}
+
+.personagem-card__info > img {
+  width: 150px;
+  margin-right: 1rem;
+}
