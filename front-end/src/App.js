@@ -13,8 +13,9 @@ export function App() {
       <div className="content">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/about/:id" exact component={Personagem} />
+          <Route path="/register" component={Form} />
           <Route path="/edit/:id" exact component={Form} />
+          <Route path="/about/:id" exact component={Personagem} />
         </Switch>
       </div>
     </div>

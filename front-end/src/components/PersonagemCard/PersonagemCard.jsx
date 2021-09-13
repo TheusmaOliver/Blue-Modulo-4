@@ -5,7 +5,7 @@ import "../../styles/personagemCard.css";
 
 export default function PersonagemCard({ id }) {
   const router = useHistory();
-  const [personagem, setPersonagem] = useState({});
+  const [personagem, setPersonagem] = useState(undefined);
   useEffect(() => {
     const loadData = async () => {
       const response = await api.buildApiGetRequest(api.readById(id));
@@ -16,6 +16,9 @@ export default function PersonagemCard({ id }) {
     };
     loadData();
   }, [id]);
+  if (!personagem) {
+    return <div>carregando...</div>;
+  }
   return (
     <div className="personagem-card">
       <div className="personagem-card__btns">

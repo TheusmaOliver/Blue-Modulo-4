@@ -13,11 +13,19 @@ const app_service_1 = require("./app.service");
 const personagem_module_1 = require("./personagem/personagem.module");
 const prisma_module_1 = require("./prisma/prisma.module");
 const localizacao_module_1 = require("./localizacao/localizacao.module");
+const usuario_module_1 = require("./usuario/usuario.module");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [personagem_module_1.PersonagemModule, prisma_module_1.PrismaModule, localizacao_module_1.LocalizacaoModule],
+        imports: [
+            personagem_module_1.PersonagemModule,
+            prisma_module_1.PrismaModule,
+            localizacao_module_1.LocalizacaoModule,
+            usuario_module_1.UsuarioModule,
+            auth_module_1.AuthModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
