@@ -14,7 +14,7 @@ const common_1 = require("@nestjs/common");
 const usuario_entity_1 = require("../usuario/entities/usuario.entity");
 const usuario_service_1 = require("../usuario/usuario.service");
 const bcrypt = require("bcrypt");
-const unautorized_error_1 = require("../errors/unautorized.error");
+const unauthorized_error_1 = require("../errors/unauthorized.error");
 const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
     constructor(usuarioService, jwtService) {
@@ -39,7 +39,7 @@ let AuthService = class AuthService {
                 return Object.assign(Object.assign({}, usuario), { senha: undefined });
             }
         }
-        throw new unautorized_error_1.UnauthorizedError('E-mail e/ou senha fornecidos são incorretos');
+        throw new unauthorized_error_1.UnauthorizedError('E-mail e/ou senha fornecidos são incorretos');
     }
 };
 AuthService = __decorate([
