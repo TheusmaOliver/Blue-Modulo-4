@@ -1,4 +1,4 @@
-import { UnauthorizedException, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';

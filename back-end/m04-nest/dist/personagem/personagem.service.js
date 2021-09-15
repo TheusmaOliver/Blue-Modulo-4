@@ -19,13 +19,6 @@ let PersonagemService = class PersonagemService {
     create(createPersonagemDto) {
         return this.prisma.personagem.create({
             data: createPersonagemDto,
-            include: {
-                origem: {
-                    select: {
-                        nome: true,
-                    },
-                },
-            },
         });
     }
     findAll() {

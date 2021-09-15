@@ -18,6 +18,6 @@ export class CreateUsuarioDto extends Usuario {
     message: 'password too weak',
   })
   senha: string;
-
+  @IsString()
   nome: string;
 }

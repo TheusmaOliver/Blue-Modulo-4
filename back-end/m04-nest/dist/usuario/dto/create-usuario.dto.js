@@ -27,5 +27,9 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], CreateUsuarioDto.prototype, "senha", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateUsuarioDto.prototype, "nome", void 0);
 exports.CreateUsuarioDto = CreateUsuarioDto;
 //# sourceMappingURL=create-usuario.dto.js.map
