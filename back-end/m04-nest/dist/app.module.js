@@ -17,6 +17,7 @@ const usuario_module_1 = require("./usuario/usuario.module");
 const auth_module_1 = require("./auth/auth.module");
 const core_1 = require("@nestjs/core");
 const jwt_auth_guard_1 = require("./auth/jwt-auth.guard");
+const episodio_module_1 = require("./episodio/episodio.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -27,6 +28,7 @@ AppModule = __decorate([
             localizacao_module_1.LocalizacaoModule,
             usuario_module_1.UsuarioModule,
             auth_module_1.AuthModule,
+            episodio_module_1.EpisodioModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [

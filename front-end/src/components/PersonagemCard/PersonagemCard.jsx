@@ -8,7 +8,7 @@ export default function PersonagemCard({ id }) {
   const [personagem, setPersonagem] = useState(undefined);
   useEffect(() => {
     const loadData = async () => {
-      const response = await api.buildApiGetRequest(api.readById(id));
+      const response = await api.buildApiGetRequest(api.readById(id), true);
 
       const bodyResult = await response.json();
 

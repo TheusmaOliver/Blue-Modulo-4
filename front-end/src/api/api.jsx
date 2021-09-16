@@ -4,9 +4,15 @@ export const api = {
   readById: (id) => `${api.baseURL}/personagem/${id}`,
   readAllLocalizationUrl: () => `${api.baseURL}/localizacao`,
   createUrl: () => `${api.baseURL}/personagem`,
-  buildApiGetRequest: (url) =>
+  loginUrl: () => `${api.baseURL}/login`,
+
+  authHeader: {
+    Authorization: `Bearer ${localStorage.getItem("JWT")}`,
+  },
+  buildApiGetRequest: (url, auth) =>
     fetch(url, {
       method: "GET",
+      headers: auth ? new Headers({ ...api.authHeader }) : undefined,
     }),
   buildApiPostRequest: (url, body) =>
     fetch(url, {

@@ -1,105 +1,90 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api/api";
-const initialValue = {
-  nome: "",
-  imagemUrl: "",
-  origemId: "",
-};
-export default function FormComponent({ id }) {
-  const [values, setValues] = useState(initialValue);
-  const [personagem, setPersonagem] = useState({});
-  const [localizacao, setLocalizacao] = useState({});
+
+export default function AdicionarPersonagem(props) {
+  const [localizacoes, setLocalizacoes] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await api.buildApiGetRequest(
-        api.readAllLocalizationUrl()
-      );
+      const response = await api.buildApiGetRequest(api.readAllUrl(), true);
 
       const bodyResult = await response.json();
 
-      setLocalizacao(bodyResult);
+      setLocalizacoes(bodyResult);
     };
+
     loadData();
-    if (id) {
-      const loadData = async () => {
-        const response = await api.buildApiGetRequest(api.readById(id));
+  }, []);
 
-        const bodyResult = await response.json();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        setValues(bodyResult);
-        setPersonagem(bodyResult);
-      };
-      loadData();
-    }
-  }, [id]);
-  console.log(localizacao);
-  function onChange(ev) {
-    const { name, value } = ev.target;
-
-    setValues({ ...values, [name]: value });
-  }
-
-  async function onSubmit(ev) {
-    ev.preventDefault();
+    const nome = event.target.nome.value;
+    const imagemUrl = event.target.imagemUrl.value;
+    const origemId = +event.target.origemId.value;
 
     const payload = {
-      ...values,
-      origemId: +values.origemId,
+      nome,
+      imagemUrl,
+      origemId,
     };
 
     const response = await api.buildApiPostRequest(api.createUrl(), payload);
 
     const bodyResult = await response.json();
 
-    console.log(bodyResult);
-  }
-  if (!localizacao) {
-    return <div>carregando...</div>;
-  }
+    props.history.push("/personagem/" + bodyResult.id);
+  };
+
   return (
-    <div className="form">
-      <h2 className="form-title">
-        {id ? `Editando: ${personagem.nome}` : "Cadastre um novo personagem"}
-      </h2>
-      <form onSubmit={onSubmit} className="form-content">
-        <div className="form-box">
-          <label className="form-box__label" htmlFor="nome">
-            Nome
-          </label>
-          <input
-            className="form-box__input"
-            type="text"
-            name="nome"
-            required
-            value={values.nome}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-box">
-          <label className="form-box__label" htmlFor="imagemUrl">
-            URL da imagem
-          </label>
-          <input
-            className="form-box__input"
-            type="text"
-            name="imagemUrl"
-            required
-            value={values.imagemUrl}
-            onChange={onChange}
-          />
-        </div>
-        <div className="form-box">
-          <select onChange={onChange} name="origemId" id="origemId">
-            <option>Selecione uma opção</option>
-            {localizacao.map((item, index) => (
-              <option key={index} name="origemId" value={item.id}>
-                {item.nome}
-              </option>
-            ))}
-          </select>
-        </div>
-        <input type="submit" value="adicionar" />
+    <div className="adicionar">
+      <form className="adicionar__form form" onSubmit={handleSubmit}>
+        <label htmlFor="nome" className="form__label">
+          Nome:
+        </label>
+        <br />
+
+        <input type="text" id="nome" name="nome" className="form__input" />
+
+        <br />
+
+        <label htmlFor="imagemUrl" className="form__label">
+          URL da Imagem:
+        </label>
+        <br />
+
+        <input
+          type="text"
+          id="imagemUrl"
+          name="imagemUrl"
+          className="form__input"
+        />
+
+        <br />
+
+        <label htmlFor="origemId" className="form__label">
+          Origem:
+        </label>
+        <br />
+
+        <select id="origemId" name="origemId">
+          <option value="">Selecione uma opção</option>
+
+          {localizacoes.map((localizacao, index) => (
+            <option key={"localizacao_" + index} value={localizacao.id}>
+              {localizacao.nome}
+            </option>
+          ))}
+        </select>
+
+        <br />
+
+        <input
+          type="submit"
+          value="Adicionar"
+          className="form__submit button button--success"
+        />
       </form>
     </div>
   );

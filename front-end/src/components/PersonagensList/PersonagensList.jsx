@@ -7,8 +7,8 @@ export default function PersonagensList() {
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await api.buildApiGetRequest(api.readAllUrl());
-
+      const response = await api.buildApiGetRequest(api.readAllUrl(), true);
+      console.log(response);
       const bodyResult = await response.json();
 
       setPersonagens(bodyResult);
